@@ -6,6 +6,10 @@
     }],
     "routes": [
         {
+            "src": "/static/(.*)",
+            "dest": "/static/"
+        },
+        {
             "src": "/(.*)",
             "dest": "simpleshopping/wsgi.py"
         }
