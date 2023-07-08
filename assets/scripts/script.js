@@ -1,6 +1,7 @@
-console.log("haha")
+
 $('.temp_add_button').hide()
 $('.temp_item_add_button').hide()
+checkEmty()
 $('.item_add_button').click(async function (e) {
     e.preventDefault();
 
@@ -40,21 +41,39 @@ $('.item_add_button').click(async function (e) {
         url: "/new-cart",
         data: data,
         success: function (response) {
-              $('.cart_body').append(response)
+            $('.cart_body').append(response)
+       
+            console.log("hidden")
            
         }
     });
 
+   
     await $.ajax({
         type: "get",
         url: "/calc-totalsum",
         success: function (response) {
             console.log(response['totalsum'])
             $('.App_title_amount').text('$'+response['totalsum'])
+            checkEmty()
         }
     });
+ 
 });
 
+function checkEmty(){
+    Amount= $('.App_title_amount').text()
+    console.log("amount"+ Amount)
+    if(Amount.trim()=="$0"){
+        console.log("show")
+        $('.EmptyBlock').show()
+    }else{
+  
+        console.log("hide")
+        console.log($('.EmptyBlock'))
+        $('.EmptyBlock').hide()
+    }
+}
 // $('.addItem').click(async function(e){
 //     e.preventDefault()
 //     console.log('+')
