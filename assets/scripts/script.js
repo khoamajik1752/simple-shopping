@@ -4,12 +4,12 @@ $('.temp_item_add_button').hide()
 checkEmty()
 $('.item_add_button').click(async function (e) {
     e.preventDefault();
-
     id = $(this).attr('item-id');
-    console.log(id)
     var token =  $('input[name="csrfmiddlewaretoken"]').attr('value'); 
-    console.log(token)
     data=null;
+    $(this).hide()
+    $(`[key=${id}] .temp_add_button`).show()
+    console.log("already")
     await $.ajax({
         type: "POST",
         url: "/getinfo",
@@ -33,8 +33,8 @@ $('.item_add_button').click(async function (e) {
       
         }
     });
-    $(this).hide()
-    $(`[key=${id}] .temp_add_button`).show()
+
+
     console.log(  $(`[key=${id}] .temp_add_button`))
     await $.ajax({
         type: "GET",
