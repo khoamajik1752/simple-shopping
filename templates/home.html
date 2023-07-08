@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  rel="stylesheet" href="{%static 'styles/styles.css'%}" />
+    <link  rel="stylesheet" href="{%static 'styles/list.css'%}" />
+    <link  rel="stylesheet" href="{%static 'styles/cart.css'%}" />
+
+    <style>
+      * {
+          font-family: "Rubik", Georgia, serif !important;
+      }
+  </style>
+    <title>Document</title>
+</head>
+<body>
+  {% csrf_token %}
+    <div id="root">
+        <div class="App" >
+            <div class="App_content"> 
+                <div class="App_top">
+                    <img src="{% static 'img/nike.png' %}" alt="" class="App_top_logo" />
+                </div>
+                <div class="App_title">Our Products</div>
+                <div class="App_body">
+
+                    {% for item in products %}
+                    <div class="item" key="{{item.id}}">
+                        <div class="item_img">
+                          <img src="{{item.image}}" alt="" />
+                        </div>
+                        <div class="item_name">{{item.name}} </div>
+                        <div class="item_description">{{item.description}}</div>
+                        <div class="item_bottom">
+                        <div class="item_price">${{item.price}}</div>
+                  
+                          {% if item.id in added %}
+               
+                          <div class="item_add_button_inactive item_add_button">
+                            <div class="item_add_button_cover">
+                              <img src="{% static 'img/check.png' %}" alt="" class="item_add_button_checkbox" />
+                            </div>
+                          </div>
+                          {% else %}
+                   
+                          <div class="item_add_button" item-id={{item.id}}>
+                            <p>ADD TO CART</p>
+                          </div>
+                          {% endif %}
+                          
+                          <div class="item_add_button_inactive temp_add_button item_add_button">
+                            <div class="item_add_button_cover">
+                              <img src="{% static 'img/check.png' %}" alt="" class="item_add_button_checkbox" />
+                            </div>
+                          </div>
+                          <div class="item_add_button temp_item_add_button" item-id={{item.id}}>
+                            <p>ADD TO CART</p>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                        {% comment %} code here {% endcomment %}
+                </div>
+                
+            </div>
+            <div class="App_content"> 
+                <div class="App_top">
+                    <img src="{% static 'img/nike.png' %}" alt="" class="App_top_logo" />
+                </div>
+                <div class="App_title">Your cart
+                    <span class="App_title_amount" style="float: right; ">
+                        ${{totalsum}}
+                      </span>
+                </div>
+           
+                <div class="App_body cart_body">
+        
+
+                  <div class="EmptyBlock">
+                    <p class="EmptyText">Your cart is empty.</p>
+                  </div>
+           
+                  {% for key, item in cart  %}
+
+                  <div id="p{{key}}" >                        
+                      <div class="Cart_item">
+                        <div class="Cart_itemLeft">
+                          <div
+                            class="Cart_itemImg"
+                            style='backgroundColor: "rgb(225, 231, 237)"'
+                          >
+                            <div class="Cart_itemBlock">
+                              <img src={{item.image}} alt="" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="Cart_itemRight">
+                          <div class="Cart_itemName">{{item.name}}</div>
+                          <div class="Cart_itemPrice">${{item.price}}</div>
+                          <div class="Cart_itemAction">
+                            <div class="Cart_itemCount">
+                              <div
+                                class="Cart_itemCountButton delItem" pro-id="{{key}}">
+                                -
+                              </div>
+                              <div class="Cart_itemCountNumber" >{{item.quantity}}</div>
+                              <div
+                                class="Cart_itemCountButton addItem"   
+                                pro-id="{{key}}"
+                              >
+                                +
+                              </div>
+                            </div>
+                            <div class="Cart_itemRemove"
+                                  pro-id="{{key}}"
+                            >
+                              <img
+                                src="{% static 'img/trash.png' %}"
+                                alt=""
+                              
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+          
+                  {% endfor %}
+
+                </div>
+            </div>
+        </div> 
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'scripts/script.js' %}"></script>
+    <script class="cartScript" src="{% static 'scripts/cart.js' %}"></script>
+</body>
+
+</html>

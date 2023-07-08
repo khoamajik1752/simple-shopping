@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+.Cart_item {
+    display: flex;
+    padding: 20px 0;
+  }
+  
+  .Cart_itemLeft {
+    flex: 0;
+  }
+  
+  .EmptyBlock {
+    position: absolute;
+  }
+  
+  .EmptyBlock > p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+  .EmptyText {
+    font-size: 14px;
+  }
+  
+  .Cart_itemRight {
+    flex: 1;
+  }
+  
+  .Cart_itemImg {
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    background-color: #777777;
+    margin-right: 34px;
+  }
+  
+  .Cart_itemBlock img {
+    display: block;
+    width: 140%;
+    transform: rotate(-28deg) translateY(-40px);
+    filter: drop-shadow(0 30px 20px rgba(0, 0, 0, 0.2));
+  }
+  
+  .Cart_itemName {
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .Cart_itemPrice {
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  
+  .Cart_itemAction,
+  .Cart_itemCount {
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .Cart_itemCount {
+    flex: 1;
+  }
+  .Cart_itemCountNumber {
+    font-size: 14px;
+    margin: 0 8px;
+    width: 20px;
+    text-align: center;
+  }
+  
+  .Cart_itemRemove {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f6c90e;
+    transition: 0.2s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .Cart_itemRemove img {
+    width: 16px;
+    height: 16px;
+  }
+  .Cart_itemCountButton {
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 100%;
+    background-color: #eee;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
