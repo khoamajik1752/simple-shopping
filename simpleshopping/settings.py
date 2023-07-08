@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-a!pjhk3c!r$dmwi68-ytb)5!d08e6fw10k-88%0kf)d0z8y)69
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 
 
 
@@ -75,15 +75,9 @@ WSGI_APPLICATION = "simpleshopping.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+import dj_database_url
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'shopping',
-        'USER': 'admin',
-        'PASSWORD': '123',
-        'HOST':'localhost'
-    }
+    "default": dj_database_url.parse('postgres://admin:aY1vzi50IVukjt2n5u4L2Wuh6gFxwW8E@dpg-ciki2rtph6eg6kbipgq0-a.singapore-postgres.render.com/shopping_9bog')
 }
 
 
